@@ -7,7 +7,6 @@ library(dplyr)
 # Tarefa 1: Leitura do banco de dados
 
 dados_sinasc = read.csv("SINASC_2015.csv", header = TRUE, sep = ";")
-attach(dados_sinasc)
 
 # Estrutura dos dados
 str(dados_sinasc)
@@ -28,8 +27,6 @@ dados_sinasc_1 = dados_sinasc %>%
   )
 
 names(dados_sinasc_1)
-attach(dados_sinasc_1)
-
 str(dados_sinasc_1)
 
 
@@ -267,5 +264,7 @@ dados_sinasc_2$ESTCIV = factor(dados_sinasc_2$ESTCIV,
                                 levels = c("Sem companheiro", "Com companheiro")
 )
 
+# Realizando o salvamento da base de dados para fins de facilitar o uso futuro
+saveRDS(dados_sinasc_2, "dados_sinasc_2.rds")
 
 

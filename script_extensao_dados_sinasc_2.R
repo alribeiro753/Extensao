@@ -267,4 +267,25 @@ dados_sinasc_2$ESTCIV = factor(dados_sinasc_2$ESTCIV,
 # Realizando o salvamento da base de dados para fins de facilitar o uso futuro
 saveRDS(dados_sinasc_2, "dados_sinasc_2.rds")
 
+#### #### #### #### ####
+
+# Tarefa 8: 
+
+# Leitura da nova tabela PIG Brasil
+
+tabela_pig_brasil = read.csv("Tabela_PIG_Brasil.csv", header = TRUE, sep = ";")
+
+# Adicionando as colunas Peso_P10 e Peso_P90 na tabela dados_sinasc_2
+
+dados_sinasc_2 = left_join(dados_sinasc_2, tabela_pig_brasil, by = c("SEMAGESTAC", "SEXO"))
+
+# Criação das variáveis
+
+temp$F_PIG[dados_sinasc_2$PESO < dados_sinasc_2$PESO_P10] = "PIG"
+temp$F_PIG[dados_sinasc_2$PESO_P10 <= dados_sinasc_2$PESO & dados_sinasc_2$PESO <= dados_sinasc_2$PESO_P90] = "AIG"
+temp$F_PIG[dados_sinasc_2$PESO > dados_sinasc_2$PESO_P90] = "GIG"
+
+
+
+
 

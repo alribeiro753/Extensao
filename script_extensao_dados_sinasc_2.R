@@ -281,11 +281,11 @@ dados_sinasc_2 = left_join(dados_sinasc_2, tabela_pig_brasil, by = c("SEMAGESTAC
 
 # Criação das variáveis
 
-temp$F_PIG[dados_sinasc_2$PESO < dados_sinasc_2$PESO_P10] = "PIG"
-temp$F_PIG[dados_sinasc_2$PESO_P10 <= dados_sinasc_2$PESO & dados_sinasc_2$PESO <= dados_sinasc_2$PESO_P90] = "AIG"
-temp$F_PIG[dados_sinasc_2$PESO > dados_sinasc_2$PESO_P90] = "GIG"
+dados_sinasc_2$F_PIG[dados_sinasc_2$PESO < dados_sinasc_2$PESO_P10] = "PIG"
+dados_sinasc_2$F_PIG[dados_sinasc_2$PESO_P10 <= dados_sinasc_2$PESO & dados_sinasc_2$PESO <= dados_sinasc_2$PESO_P90] = "AIG"
+dados_sinasc_2$F_PIG[dados_sinasc_2$PESO > dados_sinasc_2$PESO_P90] = "GIG"
 
-
+# Tarefas 9 e 10
 
 
 

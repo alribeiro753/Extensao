@@ -8,3 +8,4 @@ backup.rds
 dados_sinasc.rds
 dados_sinasc_1.rds
 dados_sinasc_2.rds
+script_extensao_dados_sinasc_2.R

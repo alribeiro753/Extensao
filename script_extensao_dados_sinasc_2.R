@@ -29,7 +29,7 @@ names(dados_sinasc_1)
 str(dados_sinasc_1)
 
 
-# Tarefa 3: Reduçaõ de dados_sinasc_1 para a minha unidade federativa, 11: RO
+# Tarefa 3: Redução de dados_sinasc_1 para a minha unidade federativa, 11: RO
 
 dados_sinasc_2 = dados_sinasc_1 %>%
   filter(substr(CODMUNRES, 1, 2) == "11")
@@ -107,104 +107,104 @@ sum(dados_sinasc_2$TPROBSON == 11, na.rm = TRUE)
 
 # Para LOCNASC
 dados_sinasc_2$LOCNASC = factor(dados_sinasc_2$LOCNASC,
-                                 levels = c(1, 2, 3, 4, 5),
-                                 labels = c("Hospital", "Outros estabelecimentos de saúde", 
-                                            "Domicílio", "Outros",
-                                            "Aldeia indígena")
+                                levels = c(1, 2, 3, 4, 5),
+                                labels = c("Hospital", "Outros estabelecimentos de saúde", 
+                                           "Domicílio", "Outros",
+                                           "Aldeia indígena")
 )
 
 
 # Para ESTCIVMAE
 dados_sinasc_2$ESTCIVMAE = factor(dados_sinasc_2$ESTCIVMAE,
-                                   levels = c(1, 2, 3, 4, 5),
-                                   labels = c("Solteira", "Casada", "Viúva", 
-                                              "Separada judicialmente/divorciada", 
-                                              "União estável")
+                                  levels = c(1, 2, 3, 4, 5),
+                                  labels = c("Solteira", "Casada", "Viúva", 
+                                             "Separada judicialmente/divorciada", 
+                                             "União estável")
 )
 
 
 # Para GESTACAO
 dados_sinasc_2$GESTACAO = factor(dados_sinasc_2$GESTACAO,
-                                  levels = c(1, 2, 3, 4, 5, 6),
-                                  labels = c("Menos de 22 semanas", "22 a 27 semanas", 
-                                             "28 a 31 semanas", 
-                                             "32 a 36 semanas", "37 a 41 semanas", 
-                                             "42 semanas e mais")
+                                 levels = c(1, 2, 3, 4, 5, 6),
+                                 labels = c("Menos de 22 semanas", "22 a 27 semanas", 
+                                            "28 a 31 semanas", 
+                                            "32 a 36 semanas", "37 a 41 semanas", 
+                                            "42 semanas e mais")
 )
 
 # Para GRAVIDEZ
 dados_sinasc_2$GRAVIDEZ = factor(dados_sinasc_2$GRAVIDEZ,
-                                  levels = c(1, 2, 3),
-                                  labels = c("Única", "Dupla", "Tripla ou mais")
+                                 levels = c(1, 2, 3),
+                                 labels = c("Única", "Dupla", "Tripla ou mais")
 )
 
 # Para PARTO
 dados_sinasc_2$PARTO = factor(dados_sinasc_2$PARTO,
-                               levels = c(1, 2),
-                               labels = c("Vaginal", "Cesário")
+                              levels = c(1, 2),
+                              labels = c("Vaginal", "Cesário")
 )
 
 # Para SEXO
 dados_sinasc_2$SEXO = factor(dados_sinasc_2$SEXO,
-                              levels = c(1, 2),
-                              labels = c("Masculino", "Feminino")
+                             levels = c(1, 2),
+                             labels = c("Masculino", "Feminino")
 )
 
 
 # Para RACACOR
 dados_sinasc_2$RACACOR = factor(dados_sinasc_2$RACACOR,
-                                 levels = c(1, 2, 3, 4, 5),
-                                 labels = c("Branca", "Preta", "Amarela", 
-                                            "Parda", "Indígena")
+                                levels = c(1, 2, 3, 4, 5),
+                                labels = c("Branca", "Preta", "Amarela", 
+                                           "Parda", "Indígena")
 )
 
 # Para IDANOMAL
 dados_sinasc_2$IDANOMAL = factor(dados_sinasc_2$IDANOMAL,
-                                  levels = c(1, 2),
-                                  labels = c("Sim", "Não")
+                                 levels = c(1, 2),
+                                 labels = c("Sim", "Não")
 )
 
 # Para ESCMAE2010
 dados_sinasc_2$ESCMAE2010 = factor(dados_sinasc_2$ESCMAE2010,
-                                    levels = c(0, 1, 2, 3, 4, 5),
-                                    labels = c("Sem escolaridade", "Fundamental I", 
-                                               "Fundamental II",
-                                               "Médio", "Superior incompleto", "Superior completo")
+                                   levels = c(0, 1, 2, 3, 4, 5),
+                                   labels = c("Sem escolaridade", "Fundamental I", 
+                                              "Fundamental II",
+                                              "Médio", "Superior incompleto", "Superior completo")
 )
 
 # Para RACACORMAE
 dados_sinasc_2$RACACORMAE = factor(dados_sinasc_2$RACACORMAE,
-                                    levels = c(1, 2, 3, 4, 5),
-                                    labels = c("Branca", "Preta", "Amarela", "Parda", "Indígena")
+                                   levels = c(1, 2, 3, 4, 5),
+                                   labels = c("Branca", "Preta", "Amarela", "Parda", "Indígena")
 )
 
 # Para TPAPRESENT
 dados_sinasc_2$TPAPRESENT = factor(dados_sinasc_2$TPAPRESENT,
-                                    levels = c(1, 2, 3),
-                                    labels = c("Cefálico", "Pélvica ou podálica", "Transversa")
+                                   levels = c(1, 2, 3),
+                                   labels = c("Cefálico", "Pélvica ou podálica", "Transversa")
 )
 
 # Para TPROBSON
 dados_sinasc_2$TPROBSON = factor(dados_sinasc_2$TPROBSON,
-                                  levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
-                                  labels = c("Grupo 1", "Grupo 2", "Grupo 3", "Grupo 4", 
-                                             "Grupo 5",
-                                             "Grupo 6", "Grupo 7", "Grupo 8", "Grupo 9", 
-                                             "Grupo 10")
+                                 levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+                                 labels = c("Grupo 1", "Grupo 2", "Grupo 3", "Grupo 4", 
+                                            "Grupo 5",
+                                            "Grupo 6", "Grupo 7", "Grupo 8", "Grupo 9", 
+                                            "Grupo 10")
 )
 
 # Para PARIDADE
 dados_sinasc_2$PARIDADE = factor(dados_sinasc_2$PARIDADE,
-                                  levels = c(0, 1),
-                                  labels = c("Nulípara", "Multípara")
+                                 levels = c(0, 1),
+                                 labels = c("Nulípara", "Multípara")
 )
 
 # Para KOTELCHUCK
 dados_sinasc_2$KOTELCHUCK = factor(dados_sinasc_2$KOTELCHUCK,
-                                    levels = c(1, 2, 3, 4, 5),
-                                    labels = c("Não realizou pré-natal", "Inadequado", 
-                                               "Intermediário", 
-                                               "Adequado", "Mais que adequado")
+                                   levels = c(1, 2, 3, 4, 5),
+                                   labels = c("Não realizou pré-natal", "Inadequado", 
+                                              "Intermediário", 
+                                              "Adequado", "Mais que adequado")
 )
 
 
@@ -221,7 +221,7 @@ dados_sinasc_2$F_PESO[dados_sinasc_2$PESO >= 2500 & dados_sinasc_2$PESO < 4000] 
 dados_sinasc_2$F_PESO[dados_sinasc_2$PESO >= 4000] = "Macrossomia"
 
 dados_sinasc_2$F_PESO = factor(dados_sinasc_2$F_PESO,
-                                levels = c("Baixo peso", "Peso normal", "Macrossomia")
+                               levels = c("Baixo peso", "Peso normal", "Macrossomia")
 )
 
 # Categorizando a variável IDADEMAE
@@ -239,7 +239,7 @@ dados_sinasc_2$F_IDADE[dados_sinasc_2$IDADEMAE >= 45 & dados_sinasc_2$IDADEMAE <
 dados_sinasc_2$F_IDADE[dados_sinasc_2$IDADEMAE >= 50] = "50+"
 
 dados_sinasc_2$F_IDADE = factor(dados_sinasc_2$F_IDADE,
-                                 levels = c("<15","15-19","20-24","25-29","30-34","35-39","40-44","45-49","50+")
+                                levels = c("<15","15-19","20-24","25-29","30-34","35-39","40-44","45-49","50+")
 )
 
 # Categorizando a variável APGAR5
@@ -250,7 +250,7 @@ dados_sinasc_2$F_APGAR5[dados_sinasc_2$APGAR5 < 7] = "Baixo"
 dados_sinasc_2$F_APGAR5[dados_sinasc_2$APGAR5 >= 7] = "Normal"
 
 dados_sinasc_2$F_APGAR5 = factor(dados_sinasc_2$F_APGAR5,
-                                  levels = c("Baixo", "Normal")
+                                 levels = c("Baixo", "Normal")
 )
 
 # Criando e atribuindo categorias a nova variável Peregrinação ou "PERIG"
@@ -273,7 +273,7 @@ dados_sinasc_2$ESTCIV[dados_sinasc_2$ESTCIVMAE %in% c("Casada",
                                                       "União estável")] = "Com companheiro"
 
 dados_sinasc_2$ESTCIV = factor(dados_sinasc_2$ESTCIV,
-                                levels = c("Sem companheiro", "Com companheiro")
+                               levels = c("Sem companheiro", "Com companheiro")
 )
 
 
@@ -299,19 +299,19 @@ dados_sinasc_2$F_PIG[dados_sinasc_2$PESO > dados_sinasc_2$PESO_P90] = "GIG"
 
 # Criando a base SINASC_RO
 colunas_SINASC_RO = c("ANO","NIVEL","CODMUNRES","TN","TNRC","TNRCR","TGI_15","TGI_15_19",
-              "TGI_20_24","TGI_25_29","TGI_30_34","TGI_35_39","TGI_40_44","TGI_45_49",
-              "TGI_50","TGIF","IM_P25","IM_P50","IM_P75","IM_MD","IM_DP","EM_S","EM_FI",
-              "EM_FII","EM_M","EM_SI","EM_SC","TGRC_B","TGRC_PT","TGRC_A","TGRC_PD",
-              "TGRC_I","TGSC","TGCC","TGPRI","TGNPRI","TGU","TGG","TGD_22",
-              "TGD_22_27","TGD_28_31","TGD_32_36","TGD_37_41","TGD_42","TGD_PRT",
-              "TGD_AT","TGD_PST","DG_P25","DG_P50","DG_P75","DG_MD","DG_DP","TKC_NR",
-              "TKC_ID","TKC_IT","TKC_AD","TKC_MAD","TGPRG_S","TGPRG_N","TPV","TPC",
-              "TRAP_C","TRAP_P","TRAP_T","TGROB_1","TGROB_2","TGROB_3","TGROB_4",
-              "TGROB_5","TGROB_6","TGROB_7","TGROB_8","TGROB_9","TGROB_10","TNLOC_H",
-              "TNLOC_ES","TNLOC_D","TNLOC_O","TNLOC_AI","TRS_M","TRS_F","TRRC_B","TRRC_PT",
-              "TRRC_A","TRRC_PD","TRRC_I","TRP_BP","TRP_N","TRP_M","PESO_P25","PESO_P50",
-              "PESO_P75","PESO_MD","PESO_DP","TRPIG_P","TRPIG_A","TRPIG_G","TRAPG5_B",
-              "TRAPG5_N","APG5_MD","APG5_DP","TRAC","TRSAC")
+                      "TGI_20_24","TGI_25_29","TGI_30_34","TGI_35_39","TGI_40_44","TGI_45_49",
+                      "TGI_50","TGIF","IM_P25","IM_P50","IM_P75","IM_MD","IM_DP","EM_S","EM_FI",
+                      "EM_FII","EM_M","EM_SI","EM_SC","TGRC_B","TGRC_PT","TGRC_A","TGRC_PD",
+                      "TGRC_I","TGSC","TGCC","TGPRI","TGNPRI","TGU","TGG","TGD_22",
+                      "TGD_22_27","TGD_28_31","TGD_32_36","TGD_37_41","TGD_42","TGD_PRT",
+                      "TGD_AT","TGD_PST","DG_P25","DG_P50","DG_P75","DG_MD","DG_DP","TKC_NR",
+                      "TKC_ID","TKC_IT","TKC_AD","TKC_MAD","TGPRG_S","TGPRG_N","TPV","TPC",
+                      "TRAP_C","TRAP_P","TRAP_T","TGROB_1","TGROB_2","TGROB_3","TGROB_4",
+                      "TGROB_5","TGROB_6","TGROB_7","TGROB_8","TGROB_9","TGROB_10","TNLOC_H",
+                      "TNLOC_ES","TNLOC_D","TNLOC_O","TNLOC_AI","TRS_M","TRS_F","TRRC_B","TRRC_PT",
+                      "TRRC_A","TRRC_PD","TRRC_I","TRP_BP","TRP_N","TRP_M","PESO_P25","PESO_P50",
+                      "PESO_P75","PESO_MD","PESO_DP","TRPIG_P","TRPIG_A","TRPIG_G","TRAPG5_B",
+                      "TRAPG5_N","APG5_MD","APG5_DP","TRAC","TRSAC")
 
 SINASC_RO = data.frame(matrix(ncol = length(colunas_SINASC_RO), nrow = 53))
 colnames(SINASC_RO) = colunas_SINASC_RO
@@ -403,18 +403,18 @@ contar_por_municipio = function(df_base, df_filtrado, nome_coluna) {
 }
 
 # Método de execução da função de contagem
-for (nome in names(regras_contagem)) {
-  
-  df_filtrado = regras_contagem[[nome]](dados_sinasc_2)
-  
-  cat("Rodando:", nome, "- Linhas:", nrow(df_filtrado), "\n")
-  
-  SINASC_RO = contar_por_municipio(
-    SINASC_RO,
-    df_filtrado,
-    nome
-  )
-}
+#for (nome in names(regras_contagem)) {
+
+#  df_filtrado = regras_contagem[[nome]](dados_sinasc_2)
+
+#  cat("Rodando:", nome, "- Linhas:", nrow(df_filtrado), "\n")
+
+#  SINASC_RO = contar_por_municipio(
+#    SINASC_RO,
+#    df_filtrado,
+#    nome
+#  )
+#}
 
 
 # Função para calcular as medidas resumo
@@ -422,8 +422,8 @@ for (nome in names(regras_contagem)) {
 resumo_por_municipio = function(df_base, df, var, func, nome_coluna) {
   
   aux = aggregate(df[[var]], 
-                   by = list(CODMUNRES = df$CODMUNRES), 
-                   FUN = func)
+                  by = list(CODMUNRES = df$CODMUNRES), 
+                  FUN = func)
   
   colnames(aux)[2] = "valor"
   
@@ -443,32 +443,32 @@ resumo_por_municipio = function(df_base, df, var, func, nome_coluna) {
 
 # Método para execução da função de medidas resumo
 # estatísticas
-for (nome in names(regras_resumo)) {
-  
-  regra <- regras_resumo[[nome]]
-  
-  SINASC_RO <- resumo_por_municipio(
-    SINASC_RO,
-    dados_sinasc_2,
-    regra$var,
-    regra$func,
-    nome
-  )
-}
+#for (nome in names(regras_resumo)) {
+
+#  regra <- regras_resumo[[nome]]
+
+#  SINASC_RO <- resumo_por_municipio(
+#    SINASC_RO,
+#    dados_sinasc_2,
+#    regra$var,
+#    regra$func,
+#    nome
+#  )
+#}
 
 #### #### #### #### ####
 
 # Pegando o nomedas colunas em dados_sinasc e dados_sinasc_2
-nomes_61col = names(dados_sinasc) #Não rodar
+nomes_61col = names(dados_sinasc) 
 nomes_22col = names(dados_sinasc_1)
 
 # Criando os filtros para calcular TNRC e TNRCR
 # TNRC
 df_tnrc = dados_sinasc[
   complete.cases(dados_sinasc[, nomes_61col]),
-] # Não rodar
+]
 
-table(df_tnrc$CODMUNRES) # Não rodar
+table(df_tnrc$CODMUNRES)
 
 # TNRCR
 df_tnrcr = dados_sinasc_1[
@@ -476,19 +476,19 @@ df_tnrcr = dados_sinasc_1[
 ]
 
 # Aplicando as funções de contagem em cima da base backup para TNRC e TNRCR
+# Para TNRC
 SINASC_RO = contar_por_municipio(SINASC_RO, df_tnrc, "TNRC") # Aqui, não é possível calcular pois 
-                                                       # na base dados_sinasc tem uma coluna inteira
-                                                       # de NA's.
+# na base dados_sinasc tem uma coluna inteira
+# de NA's.
+# Era para calcular mesmo. A coluna resultará em zeros
 
+# Para TNRCR
 SINASC_RO = contar_por_municipio(SINASC_RO, df_tnrcr, "TNRCR")
 
 
-# Base de teste
-backup = SINASC_RO
-
 # Aplicando a contagem para as variáveis 7 a 16, 22 a 27, 28 a 32, 39 a 47, 53 a 57
 # 60 e 61, 65 a 74, 80 e 81, 87 a 89, 98 e 99.
-regras_contagem <- list(
+regras_contagem = list(
   
   # total
   TN = function(df) df,
@@ -629,6 +629,7 @@ for (nome in names(regras_contagem)) {
   )
 }
 
+# Adaptar a aproximação para duas casas decimais
 # Regras de resumo para as variáveis 
 regras_resumo = list(
   
@@ -677,14 +678,32 @@ for (nome in names(regras_resumo)) {
 
 write.csv(SINASC_RO, "SINASC_RO.csv", row.names = FALSE)
 
+
+# Código para arredondar todos números com decimais, para 2 casas decimais
+SINASC_RO[, c(
+  "IM_P25", "IM_P50", "IM_P75", "IM_MD", "IM_DP",
+  "DG_P25", "DG_P50", "DG_P75", "DG_MD", "DG_DP",
+  "PESO_P25", "PESO_P50", "PESO_P75", "PESO_MD", "PESO_DP",
+  "APG5_MD", "APG5_DP"
+)] = round(
+  SINASC_RO[, c(
+    "IM_P25", "IM_P50", "IM_P75", "IM_MD", "IM_DP",
+    "DG_P25", "DG_P50", "DG_P75", "DG_MD", "DG_DP",
+    "PESO_P25", "PESO_P50", "PESO_P75", "PESO_MD", "PESO_DP",
+    "APG5_MD", "APG5_DP"
+  )],
+  2
+)
+
 # Este trecho serve apenas para facilitar o uso das bases em dias diferentes
-saveRDS(dados_sinasc, "dados_sinasc.rds")
-saveRDS(dados_sinasc_1, "dados_sinasc_1.rds")
-saveRDS(dados_sinasc_2, "dados_sinasc_2.rds")
-saveRDS(backup, "backup.rds")
-saveRDS(tabela_pig_brasil, "tabela_pig_brasil.rds")
-saveRDS(SINASC_RO, "SINASC_RO.rds")
-saveRDS(aux, "aux.rds")
+#saveRDS(dados_sinasc, "dados_sinasc.rds")
+#saveRDS(dados_sinasc_1, "dados_sinasc_1.rds")
+#saveRDS(dados_sinasc_2, "dados_sinasc_2.rds")
+#saveRDS(tabela_pig_brasil, "tabela_pig_brasil.rds")
+#saveRDS(SINASC_RO, "SINASC_RO.rds")
+#saveRDS(aux, "aux.rds")
 
-
-
+# Código sem erros e com correções feitas.
+# 1 - Agora é possível gerar SINASC_RO sem problemas
+# 2 - A coluna que antes pensava ser um erro, era realmente para a coluna dar zero
+# 3 - Falta adaptar a aproximação das casas decimais

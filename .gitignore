@@ -17,3 +17,7 @@ SIM_RO.csv
 .RDataTmp1
 script_extensao_etapa_1.R
 extensao-esqueleto1.R
+dados_sim_2.csv
+dados_sinasc_2.csv
+Tabela_PIG_Brasil.csv
+extensao-esqueleto-orientações-etapa-2.R

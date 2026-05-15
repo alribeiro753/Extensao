@@ -1,11 +1,24 @@
 # Script com os comandos da etapa 3 do projeto de extensão
+# Olá professora, espero que leia este comentário pois aqui estou explicando que
+# as tabelas que utilizei nesta etapa, estão presentes no meu github
+# para download. Então, para que você possa rodar o código, basta pegar os dois 
+# excel's de lá, na branch OUTROS.
+
+# Também gostaria de explicar que utilizei apenas uma tabela(sobre CENSO 2010), pois assim era mais
+# fácil para operar aqui dentro do RStudio.
 
 # Leitura de pacotes
 library(tidyverse)
 library(readxl)
 
-# Leitura das bases
-tabela_sidra_6579 = read_xlsx("tabela 6579.xlsx")
+# Leitura das tabelas necessárias
+# Tabela com a população total residente em ANO
+tabela_6579 = read_xlsx("tabela 6579.xlsx")
+
+# Base com todos os dados requisitados de acordo com a tabela 1552 do SIDRA
+# Os dados foram baixados em tabelas separadas, ordenados e posto seus códigos referentes para cada município.
+# Depois, eu juntei todas as colunas em uma única tabela(a seguir), facilitando o uso e manipulação dos dados.
+tabela_1552_unificada = read_xlsx("Tabela 1552_Unificada.xlsx")
 
 
 
@@ -13,7 +26,7 @@ tabela_sidra_6579 = read_xlsx("tabela 6579.xlsx")
 
 colunas_SIDRA_RO = c("ANO", "NIVEL", "CODMUNRES", "POPRE_T", "POPRC_T", "POPRC_M", 
                      "POPRC_F", "POPRC_15", "POPRC_15_49", "POPRC_50", "POPRC_F_15", 
-                     "POPRC_F_15_49", "POPRC_F_50.")
+                     "POPRC_F_15_49", "POPRC_F_50")
 
 SIDRA_RO = data.frame(matrix(ncol = length(colunas_SIDRA_RO), nrow = 53))
 colnames(SIDRA_RO) = colunas_SIDRA_RO
@@ -40,11 +53,63 @@ cod_municipios = c(
 
 SIDRA_RO$CODMUNRES[-1] = cod_municipios
 
-# Preenchendo a coluna POPRE_T
-SIDRA_RO$POPRE_T <- tabela_sidra_6579$Pop_est[
-  match(SIDRA_RO$CODMUNRES, tabela_sidra_6579$Codigo)
+# 1 Preenchendo a coluna POPRE_T
+SIDRA_RO$POPRE_T <- tabela_6579$POPRE_T[
+  match(SIDRA_RO$CODMUNRES, tabela_6579$Codigo)
 ]
 
+# 2 Preencher a coluna POPRC_T
+SIDRA_RO$POPRC_T = tabela_1552_unificada$POPRC_T[
+  match(SIDRA_RO$CODMUNRES, tabela_1552_unificada$Codigo)
+]
+
+# 3 Preenchendo a coluna POPRC_M
+SIDRA_RO$POPRC_M = tabela_1552_unificada$POPRC_M[
+  match(SIDRA_RO$CODMUNRES, tabela_1552_unificada$Codigo)
+]
+
+# 4 Preenchendo a coluna POPRC_F
+SIDRA_RO$POPRC_F = tabela_1552_unificada$POPRC_F[
+  match(SIDRA_RO$CODMUNRES, tabela_1552_unificada$Codigo)
+]
+
+# 5 Preenchendo a coluna POPRC_15
+SIDRA_RO$POPRC_15 = tabela_1552_unificada$POPRC_15[
+  match(SIDRA_RO$CODMUNRES, tabela_1552_unificada$Codigo)
+]
+
+# 6 Preenchendo a coluna POPRC_15_49
+SIDRA_RO$POPRC_15_49 = tabela_1552_unificada$POPRC_15_49[
+  match(SIDRA_RO$CODMUNRES, tabela_1552_unificada$Codigo)
+]
+
+# 7 Preenchendo a coluna POPRC_50
+SIDRA_RO$POPRC_50 = tabela_1552_unificada$POPRC_50[
+  match(SIDRA_RO$CODMUNRES, tabela_1552_unificada$Codigo)
+]
+
+# 8 Preenchendo a coluna POPRC_F_15
+SIDRA_RO$POPRC_F_15 = tabela_1552_unificada$POPRC_F_15[
+  match(SIDRA_RO$CODMUNRES, tabela_1552_unificada$Codigo)
+]
+
+# 9 Preenchendo a coluna POPRC_F_15_49
+SIDRA_RO$POPRC_F_15_49 = tabela_1552_unificada$POPRC_F_15_49[
+  match(SIDRA_RO$CODMUNRES, tabela_1552_unificada$Codigo)
+]
+
+# 10 Preenchendo a coluna POPRC_F_50
+SIDRA_RO$POPRC_F_50 = tabela_1552_unificada$POPRC_F_50[
+  match(SIDRA_RO$CODMUNRES, tabela_1552_unificada$Codigo)
+]
+
+# Exportando a base como arquivo .csv
+write.csv(SIDRA_RO, "SIDRA_RO.csv", row.names = FALSE)
+# Aqui também será possível conferir que há um resultado final, pelo meu github
+
+
+# Salvando a base apenas para não precisar rodar novamente no futuro
+saveRDS(SIDRA_RO, "SIDRA_RO.rds")
 
 
 

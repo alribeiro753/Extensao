@@ -131,10 +131,10 @@ agua_esgoto_filtrada = agua_esgoto |> filter(agua_esgoto$Estado == "RO")
 
 # Após a edição da tabela no excel, basta ler novamente, pois foi possível edita-lá como descrito no pdf guia no excel
 # Lendo a tabela
-agua_esgoto_RO = read_xlsx("agua_esgoto_filtrada.xlsx")
+SINISA_RO = read_xlsx("agua_esgoto_filtrada.xlsx")
 
 # Exportando o arquivo como .csv
-write.csv(agua_esgoto_RO, "agua_esgoto_RO.csv", row.names = FALSE)
+write.csv(SINISA_RO, "SINISA_RO.csv", row.names = FALSE)
 
 
 # Salvando a base apenas para não precisar rodar novamente no futuro

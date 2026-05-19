@@ -10,6 +10,7 @@
 # Leitura de pacotes
 library(tidyverse)
 library(readxl)
+library(writexl)
 
 # Leitura das tabelas necessárias
 # Tabela com a população total residente em ANO
@@ -107,9 +108,41 @@ SIDRA_RO$POPRC_F_50 = tabela_1552_unificada$POPRC_F_50[
 write.csv(SIDRA_RO, "SIDRA_RO.csv", row.names = FALSE)
 # Aqui também será possível conferir que há um resultado final, pelo meu github
 
+#### #### #### #### #### #### ####
+
+# Tarefa 2
+
+########## FAZ-SE NECESSÁRIO BAIXAR A TABELA "agua_esgoto_filtrada.xlsx" DO REPOSITÓRIO REMOTO NA BRANCH "OUTROS" ANTES DE RODAR QUALQUER CÓDIGO ########## 
+
+# Leitura da base de agua e esgoto por município original
+agua_esgoto = read.csv("agua e esgoto - município - 2015.csv", header = TRUE, sep = ";")
+
+# Filtrando a base apenas para o estado de Rondônia
+agua_esgoto_filtrada = agua_esgoto |> filter(agua_esgoto$Estado == "RO")
+
+# Exportando a tabela para edição no excel
+#write_xlsx(agua_esgoto_filtrada, "agua_esgoto_filtrada.xlsx")
+# comentei a linha de código acima, pois não é necessário rodar, apenas utilize a tabela fornecida na página
+# do projeto no meu github
+
+# Edições realizadas: Removi colunas que não estavam sendo solicitadas no pdf, e adicionei aquelas que estavam faltando
+# mantendo a integridade dos dados. É possível conferir o resultado lendo a tabela de acordo com o código à seguir
+
+
+# Após a edição da tabela no excel, basta ler novamente, pois foi possível edita-lá como descrito no pdf guia no excel
+# Lendo a tabela
+agua_esgoto_RO = read_xlsx("agua_esgoto_filtrada.xlsx")
+
+# Exportando o arquivo como .csv
+write.csv(agua_esgoto_RO, "agua_esgoto_RO.csv", row.names = FALSE)
+
 
 # Salvando a base apenas para não precisar rodar novamente no futuro
-saveRDS(SIDRA_RO, "SIDRA_RO.rds")
+#saveRDS(agua_esgoto_RO, "agua_esgoto_RO.xlsx")
+#saveRDS(SIDRA_RO, "SIDRA_RO.rds")
+
+
+
 
 
 

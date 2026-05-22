@@ -136,9 +136,68 @@ SINISA_RO = read_xlsx("agua_esgoto_filtrada.xlsx")
 # Exportando o arquivo como .csv
 write.csv(SINISA_RO, "SINISA_RO.csv", row.names = FALSE)
 
+#### #### #### #### #### #### ####
+
+# Tarefa 3
+
+# Fazendo a leitura dos arquivos solicitados
+cod_mun_brasil = read.csv("códigos dos municípios - 2010.csv", sep = ";")
+idhm_2010_municipios_brasil = read.csv2("IDHM - 2010 - municípios - Atlas Brasil.csv")
+idhm_estados = read.csv2("IDHM - 2010 (CENSO) e 2015 (PNAD) - total e por sexo - UF - Atlas Brasil.csv")
+
+# Criando base de nome ATLAS_RO
+colunas_ATLAS_RO = c("ANO", "NIVEL", "CODMUNRES", "IDHM_A", "IDHM_CA","IDHM_CA_M", "IDHM_CA_F")
+
+ATLAS_RO = data.frame(matrix(ncol = length(colunas_ATLAS_RO), nrow = 53))
+colnames(ATLAS_RO) = colunas_ATLAS_RO
+
+# Preenchendo a coluna ANO com o ano de referencia
+ATLAS_RO$ANO = 2015
+
+# Preenchendo a coluna NIVEL
+ATLAS_RO$NIVEL = "MUNICIPIO"
+ATLAS_RO$NIVEL[1] = "UF"
+
+# primeira linha = código da UF
+ATLAS_RO$CODMUNRES[1] = 11
+
+# demais linhas = códigos dos municípios de Rondônia
+cod_municipios = c(
+  110001,110002,110003,110004,110005,110006,110007,110008,110009,110010,
+  110011,110012,110013,110014,110015,110018,110020,110025,110026,110028,
+  110029,110030,110032,110033,110034,110037,110040,110045,110050,110060,
+  110070,110080,110090,110092,110094,110100,110110,110120,110130,110140,
+  110143,110145,110146,110147,110148,110149,110150,110155,110160,110170,
+  110175,110180
+)
+
+ATLAS_RO$CODMUNRES[-1] = cod_municipios
+
+# Lendo arquivo excel feito à mão fora do R, por maior facilidade para trabalho com os dados
+base_excel = read_xlsx("base editada - excel.xlsx")
+
+# Preenchendo a coluna do código de município de residência
+ATLAS_RO$CODMUNRES = base_excel$CODMUNRES
+
+# Preenchendo a coluna de IDHM_A com base no ano de referência
+ATLAS_RO$IDHM_A = base_excel$IDHM_A
+
+# Preenchendo a coluna de IDHM_CA com base no ano de CENSO 2010
+ATLAS_RO$IDHM_CA = base_excel$IDHM_CA
+
+# Preenchendo a coluna de IDHM_CA_M com base no ano de CENSO 2010
+ATLAS_RO$IDHM_CA_M = base_excel$IDHM_CA_M
+
+# Preenchendo a coluna de IDHM_CA_F com base no ano de CENSO 2010
+ATLAS_RO$IDHM_CA_F = base_excel$IDHM_CA_F
+
+# Exportando o arquivo como .csv
+write.csv(ATLAS_RO, "ATLAS_RO.csv", row.names = FALSE)
+
+
 
 # Salvando a base apenas para não precisar rodar novamente no futuro
-#saveRDS(agua_esgoto_RO, "agua_esgoto_RO.xlsx")
+#saveRDS(agua_esgoto_RO, "agua_esgoto_RO.xlsx") # Apagar esta linha depois
 #saveRDS(SIDRA_RO, "SIDRA_RO.rds")
 
 

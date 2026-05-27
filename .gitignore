@@ -15,11 +15,11 @@ tabela_pig_brasil.rds
 .RDataTmp1
 Mortalidade_Geral_2015.csv
 script_extensao_etapa_1.R
+script_extensao_etapa_2.R
 extensao-esqueleto1.R
 SIM_RO.csv
 script_extensao_dados_sinasc_2.R
 dados_sim_2.csv
-<<<<<<< HEAD
 dados_sinasc_2.csv
 Tabela_PIG_Brasil.csv
 extensao-esqueleto-orientações-etapa-2.R
@@ -47,5 +47,4 @@ códigos dos municípios - 2010.csv
 Tabela_PIG_Brasil.csv
 dados_sinasc_2.csv
 clone_etapa_2.R
-=======
->>>>>>> c7ebe16314d815fb99ea5ef6c95693533d4073d1
+

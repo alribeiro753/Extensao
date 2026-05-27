@@ -1,5 +1,7 @@
 #### Script da Etapa 4
 
+## Tarefa 1
+
 # Leitura dos pacotes
 library(tidyverse)
 library(readxl)
@@ -9,8 +11,10 @@ library(readxl)
 # Base com os códigos de 7 dígitos
 cod_mun_brasil = read.csv2("códigos dos municípios - 2010.csv")
 
-
-
+# Leitura das bases que serão utilizadas na tarefa 1, pois, precisamos que elas sejam reconhecidas pelo R
+# para que seja possível fazer as operações com elas
+SIDRA_RO = read.csv("SIDRA_RO.csv", header = TRUE, sep = ",")
+ATLAS_RO = read.csv("ATLAS_RO.csv", header = TRUE, sep = ",")
 
 # A planilha que contém os códigos dos municípios - 2010, está com a coluna "C" que é vazia
 # Portanto, segue o código para realizar sua remoção
@@ -45,19 +49,18 @@ DA_RO$CODMUNRES[-1] = cod_mun_brasil$CODMUNRES
 # Como eu trabalhei anteriormente com os códigos de  dígitos, criarei uma variável temporária dentro de DA_RO para 
 # conseguir adicionar as colunas das outras bases mais facilmente, e que essa variável será excluída ao fim.
 
-cod_temp = DA_RO
 
 # criando a coluna adicional para fazer o left_join
-cod_temp$COD6 = substr(as.character(cod_temp$CODMUNRES), 1, 6)
+DA_RO$COD6 = substr(as.character(DA_RO$CODMUNRES), 1, 6)
 
-cod_temp$COD6[1] = "11"
+DA_RO$COD6[1] = "11"
 
 # Colocando a coluna como numérico novamente
-cod_temp$COD6 = as.numeric(cod_temp$COD6)
+DA_RO$COD6 = as.numeric(DA_RO$COD6)
 
 # Adicionando a base SIDRA_RO
-cod_temp <- left_join(
-  cod_temp,
+DA_RO = left_join(
+  DA_RO,
   SIDRA_RO,
   by = c(
     "ANO",
@@ -65,4 +68,20 @@ cod_temp <- left_join(
     "COD6" = "CODMUNRES"
   )
 )
+
+# Adicionando a base ATLAS_RO
+DA_RO = left_join(
+  DA_RO,
+  ATLAS_RO,
+  by = c(
+    "ANO",
+    "NIVEL",
+    "CODMUNRES"
+  )
+)
+
+# base temporária para verificar se está fazendo o left_join corretamente
+cod_temp = DA_RO
+
+
 

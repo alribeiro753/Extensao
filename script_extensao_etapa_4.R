@@ -13,9 +13,11 @@ cod_mun_brasil = read.csv2("códigos dos municípios - 2010.csv")
 
 # Leitura das bases que serão utilizadas na tarefa 1, pois, precisamos que elas sejam reconhecidas pelo R
 # para que seja possível fazer as operações com elas
-SIDRA_RO = read.csv("SIDRA_RO.csv", header = TRUE, sep = ",")
-ATLAS_RO = read.csv("ATLAS_RO.csv", header = TRUE, sep = ",")
-SINASC_RO = read.csv("SINASC_RO.csv", header = TRUE, sep = ",")
+sidra_ro = read.csv("SIDRA_RO.csv", header = TRUE, sep = ",")
+atlas_ro = read.csv("ATLAS_RO.csv", header = TRUE, sep = ",")
+sinasc_ro = read.csv("SINASC_RO.csv", header = TRUE, sep = ",")
+sim_ro = read.csv("SIM_RO.csv", header = TRUE, sep = ",")
+sinisa_ro = read.csv("SINISA_RO.csv", header = TRUE, sep = ",")
 
 # A planilha que contém os códigos dos municípios - 2010, está com a coluna "C" que é vazia
 # Portanto, segue o código para realizar sua remoção
@@ -62,7 +64,7 @@ DA_RO$COD6 = as.numeric(DA_RO$COD6)
 # Adicionando a base SIDRA_RO
 DA_RO = left_join(
   DA_RO,
-  SIDRA_RO,
+  sidra_ro,
   by = c(
     "ANO",
     "NIVEL",
@@ -73,7 +75,7 @@ DA_RO = left_join(
 # Adicionando a base ATLAS_RO
 DA_RO = left_join(
   DA_RO,
-  ATLAS_RO,
+  atlas_ro,
   by = c(
     "ANO",
     "NIVEL",
@@ -84,7 +86,7 @@ DA_RO = left_join(
 # Adicionando a base SINASC_RO
 DA_RO = left_join(
   DA_RO,
-  SINASC_RO,
+  sinasc_ro,
   by = c(
     "ANO",
     "NIVEL",
@@ -92,8 +94,46 @@ DA_RO = left_join(
   )
 )
 
-# base temporária para verificar se está fazendo o left_join corretamente
-cod_temp = DA_RO
+# Adicionando a base SIM_RO
+DA_RO = left_join(
+  DA_RO,
+  sim_ro,
+  by = c(
+    "ANO",
+    "NIVEL",
+    "COD6" = "CODMUNRES"
+  )
+)
+
+# Adicionando a base SINISA_RO
+DA_RO = left_join(
+  DA_RO,
+  sinisa_ro,
+  by = c(
+    "ANO",
+    "NIVEL",
+    "COD6" = "CODMUNRES"
+  )
+)
+
+# Removendo a coluna auxiliar com os códigos dos municípios de 6 dígitos
+DA_RO = DA_RO |>
+  select(-COD6)
+
+# Exportando a base agregada dos dados de Rondônia
+write.csv(DA_RO, "DA_RO.csv", row.names = FALSE)
+
+# Salvamento das bases em .rds para facilitar o uso futuro aqui no R
+#saveRDS(DA_RO, "DA_RO.rds")
+#saveRDS(sidra_ro, "sidra_ro.rds")
+#saveRDS(atlas_ro, "atlas_ro.rds")
+#saveRDS(sinasc_ro, "sinasc_ro.rds")
+#saveRDS(sim_ro, "sim_ro.rds")
+#saveRDS(sinisa_ro, "sinisa_ro.rds")
+#saveRDS(cod_mun_brasil, "cod_mun_brasil.rds")
+
+
+
 
 
 

@@ -15,6 +15,7 @@ cod_mun_brasil = read.csv2("códigos dos municípios - 2010.csv")
 # para que seja possível fazer as operações com elas
 SIDRA_RO = read.csv("SIDRA_RO.csv", header = TRUE, sep = ",")
 ATLAS_RO = read.csv("ATLAS_RO.csv", header = TRUE, sep = ",")
+SINASC_RO = read.csv("SINASC_RO.csv", header = TRUE, sep = ",")
 
 # A planilha que contém os códigos dos municípios - 2010, está com a coluna "C" que é vazia
 # Portanto, segue o código para realizar sua remoção
@@ -80,8 +81,23 @@ DA_RO = left_join(
   )
 )
 
+# Adicionando a base SINASC_RO
+DA_RO = left_join(
+  DA_RO,
+  SINASC_RO,
+  by = c(
+    "ANO",
+    "NIVEL",
+    "COD6" = "CODMUNRES"
+  )
+)
+
 # base temporária para verificar se está fazendo o left_join corretamente
 cod_temp = DA_RO
+
+
+
+
 
 
 

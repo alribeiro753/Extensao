@@ -123,6 +123,66 @@ DA_RO = DA_RO |>
 # Exportando a base agregada dos dados de Rondônia
 write.csv(DA_RO, "DA_RO.csv", row.names = FALSE)
 
+
+
+
+#### #### #### #### ####
+
+## Tarefa 2: Adicionar os indcadores *na* base DA_RO
+
+
+DA_RO = DA_RO |>
+  mutate(
+    
+    # Taxa de fecundidade geral
+    TFG = (TN / POPRC_F_15_49) * 1000,
+    
+    # Taxa de mortalidade geral
+    TMG = (TO / POPRE_T) * 1000,
+    
+    # Razão de mortalidade materna
+    RMM = (TO_MT / TN) * 100000,
+    
+    # Taxa de mortalidade materna
+    TMM = (TO_MT / POPRC_F_15_49) * 100000,
+    
+    # Taxa de mortalidade materna em até 42 dias
+    TMM_P = (TO_MT_P / POPRC_F_15_49) * 100000,
+    
+    # Taxa de mortalidade neonatal
+    TMN = (TO_NT / TN) * 1000,
+    
+    # Taxa de mortalidade neonatal precoce
+    TMN_P = (TO_NT_P / TN) * 1000,
+    
+    # Taxa de mortalidade neonatal tardia
+    TMN_T = (TO_NT_T / TN) * 1000,
+    
+    # Taxa de mortalidade infantil
+    TMI = ((TO_NT + TO_PNT) / TN) * 1000
+  )
+
+# Arredondando os indicadores criados para duas casas decimais
+DA_RO = DA_RO |>
+  mutate(
+    TFG   = round(TFG, 2),
+    TMG   = round(TMG, 2),
+    RMM   = round(RMM, 2),
+    TMM   = round(TMM, 2),
+    TMM_P = round(TMM_P, 2),
+    TMN   = round(TMN, 2),
+    TMN_P = round(TMN_P, 2),
+    TMN_T = round(TMN_T, 2),
+    TMI   = round(TMI, 2)
+  )
+
+# Exportando a base com os dados agregados de RO com os indicadores
+write.csv(DA_RO, "BDEM_RO_2015.csv", row.names = FALSE)
+
+# Fazendo a leitura da base BDEM para depois salvar como .rds para futuras edições
+bdem_ro_2015 = read.csv("BDEM_RO_2015.csv", header = TRUE, sep = ",")
+
+
 # Salvamento das bases em .rds para facilitar o uso futuro aqui no R
 #saveRDS(DA_RO, "DA_RO.rds")
 #saveRDS(sidra_ro, "sidra_ro.rds")
@@ -131,6 +191,8 @@ write.csv(DA_RO, "DA_RO.csv", row.names = FALSE)
 #saveRDS(sim_ro, "sim_ro.rds")
 #saveRDS(sinisa_ro, "sinisa_ro.rds")
 #saveRDS(cod_mun_brasil, "cod_mun_brasil.rds")
+#saveRDS(bdem_ro_2015, "bdem_ro_2015.rds")
+
 
 
 
